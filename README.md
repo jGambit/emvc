@@ -8,8 +8,8 @@ With that help the developer can focus on the specific task to implement and not
 
 ### The basic ideas are:
 - Seperate controller-logic from business logic further than standard MVC.
-- Controllers are state-machines.
-- Business logic is processed by a process not a controller
+- Controllers are state-machines that call methods on a GUI-related process when a state changes.
+- Business logic is handled by a process not a controller
 - Processes are split into GUI-related and headless processes.
 - Headless processes have to be stateless and they just do the processing.
 - GUI processes should be stateless and delegate the processing from the Controller to the right headless process.
