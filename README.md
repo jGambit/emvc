@@ -1,14 +1,15 @@
 # emvc
-Extended MVC base classes
+Extended MVC base interfaces
 
 The well known software development pattern Model View Controller or short MVC is used as a basis.
-This pattern is extended with a few approved mechanism to help the developer implement business applications
+This pattern is extended with a few approved mechanisms to help the developer implement business applications
 with graphical user interfaces or short GUI in Java.
 With that help the developer can focus on the specific task to implement and not on event-handling questions.
 
 ### The basic ideas are:
-- DRY & SRP
+- Seperate controller-logic from business logic further than standard MVC.
 - Controllers are state-machines.
+- Business logic is processed by a process not a controller
 - Processes are split into GUI-related and headless processes.
 - Headless processes have to be stateless and they just do the processing.
 - GUI processes should be stateless and delegate the processing from the Controller to the right headless process.
