@@ -4,7 +4,9 @@ public interface ControllerStateIF<O> {
 
 	public boolean isUpdatingForm();
 
-	public void setUpdatingForm(boolean updatingForm);
+	public void setUpdatingForm();
+	
+	public void unsetUpdatingForm();
 
 	public boolean isCleared();
 

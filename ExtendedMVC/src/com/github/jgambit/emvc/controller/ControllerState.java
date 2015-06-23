@@ -1,21 +1,30 @@
 package com.github.jgambit.emvc.controller;
 
+import java.nio.channels.IllegalSelectorException;
+import java.util.concurrent.atomic.AtomicInteger;
+
 import com.github.jgambit.emvc.controller.iface.ControllerStateIF;
 
 public class ControllerState<O> implements ControllerStateIF<O> {
 	
-	private boolean updatingForm;
+	private final AtomicInteger updatingForm = new AtomicInteger();
 	private boolean cleared;
 	private O currentObject;
 	
 	@Override
 	public boolean isUpdatingForm() {
-		return updatingForm;
+		return updatingForm.get() > 0;
 	}
 	
 	@Override
-	public void setUpdatingForm(boolean updatingForm) {
-		this.updatingForm = updatingForm;
+	public void setUpdatingForm() {
+		updatingForm.incrementAndGet();
+	}
+	
+	public void unsetUpdatingForm() {
+		if (updatingForm.decrementAndGet() < 0) {
+			throw new IllegalSelectorException();
+		}
 	}
 	
 	@Override
@@ -41,7 +50,7 @@ public class ControllerState<O> implements ControllerStateIF<O> {
 	@Override
 	public String toString() {
 		StringBuilder result = new StringBuilder();
-		result.append(updatingForm ? "U" : "u");
+		result.append(isUpdatingForm() ? "U" : "u");
 		result.append(cleared ? "C" : "c");
 		result.append(currentObject != null ? "O" : "o");
 		return result.toString();

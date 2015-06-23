@@ -89,11 +89,11 @@ public abstract class ModulController<P extends GuiModulProcessIF, O> implements
 	}
 	
 	protected void setUpdatingForm() {
-		getState().setUpdatingForm(true);
+		getState().setUpdatingForm();
 	}
 	
 	protected void unSetUpdatingForm() {
-		getState().setUpdatingForm(false);
+		getState().unsetUpdatingForm();
 	}
 	
 	protected O getCurrentObject() {
