@@ -13,7 +13,7 @@ import com.github.jgambit.emvc.process.iface.GuiModulProcessIF;
 import com.github.jgambit.emvc.process.iface.ViewStackIF;
 
 
-public abstract class GuiModulProcess extends ModulProcess implements GuiModulProcessIF {
+public abstract class GuiModulProcess extends HeadlessModulProcess implements GuiModulProcessIF {
 	
 	private final ViewStackIF viewStack;
 	
